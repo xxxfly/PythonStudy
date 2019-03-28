@@ -1,2 +1,2 @@
-# qianduanStudyTest
-前端学习练习
+# PythonStudy
+Python学习练习
