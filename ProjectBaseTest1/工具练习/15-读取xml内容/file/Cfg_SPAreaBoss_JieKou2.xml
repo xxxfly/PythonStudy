@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AreaCodeData>
+  <productlist AreaCode="161_es_apk" APIService="http://iptvjsyd.sjgame.net:8400/ESAdminSystem_APK" Desciption="江苏移动-电竞-apk" ></productlist>
+  <productlist AreaCode="161_es_apk_newtv" APIService="http://iptvjsyd.sjgame.net:8400/esAdminSystem_newtv" Desciption="江苏移动-电竞-apk-newtv" ></productlist>
+
+
+  <productlist AreaCode="169_apk" APIService="http://111.7.172.165:8400/ESAdminSystem_APK" Desciption="河南移动-电竞-省内模式-APK" ></productlist>
+  <productlist AreaCode="169_jidi_apk" APIService="http://111.7.172.231:8400/ESAdminsystem_jidi_APK" Desciption="河南移动-电竞-基地模式-APK" ></productlist>
+
+  <productlist AreaCode="167_es_apk" APIService="http://120.210.209.13:8400/ESAdminSystem_APK" Desciption="安徽移动-电竞-apk" ></productlist>
+
+  <productlist AreaCode="162_6qi_apk" APIService="http://112.124.23.127:33016/ESAdminSystem_apk" Desciption="湖南电信-6期-apk" ></productlist>
+  <productlist AreaCode="162_6qi" APIService="http://112.124.23.127:33016/ESAdminSystem_mgepg6" Desciption="湖南电信-IPTV+电竞-6期" ></productlist>
+  <productlist AreaCode="162_5qi" APIService="http://112.124.23.127:33016/ESAdminSystem_mgepg5" Desciption="湖南电信-IPTV+电竞-5期" ></productlist>
+  <productlist AreaCode="162_oad" APIService="http://112.124.23.127:33003/ESAdminsystem_iptv" Desciption="湖南电信-老平台-电竞" ></productlist>
+  <productlist AreaCode="162_dmld_sd" APIService="http://112.124.23.127:33003/FLAdminSystem_BaoYue" Desciption="湖南电信-老平台-动漫乐斗" ></productlist>
+  <productlist AreaCode="105" APIService="http://182.131.0.210/ESAdminSystem" Desciption="四川电信-电竞" ></productlist>
+  <productlist AreaCode="105_dmld" APIService="http://182.131.0.210/FLAdminSystem_BaoYue" Desciption="四川电信-动漫乐斗" ></productlist>
+  <productlist AreaCode="105_klcb" APIService="http://182.131.0.210/FLAdminSystem_BaoYue_klcb" Desciption="四川电信-酷乐城堡" ></productlist>
+
+  <productlist AreaCode="103_gd4k_dmld" APIService="http://112.124.23.127:33015/FLAdminsystem_BaoYue_hd" Desciption="湖北电信-动漫乐斗-高清" ></productlist>
+  <productlist AreaCode="103_wdsy_hd" APIService="http://112.124.23.127:33015/ESAdminSystem_wdsy" Desciption="湖北电信-电竟平台-高清" ></productlist>
+
+  <productlist AreaCode="115_dmld" APIService="http://112.124.23.127:32677/FLAdminSystem_BaoYue" Desciption="北京联通-动漫乐斗" ></productlist>
+  <productlist AreaCode="115_ktly_ppv" APIService="http://112.124.23.127:32677/FLAdminSystem/APIService_PPV" Desciption="北京联通-卡通乐园-PPV" ></productlist>
+
+  <productlist AreaCode="112_klcb_sd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_klcb" Desciption="辽宁广联-酷乐城堡-标清" ></productlist>
+  <productlist AreaCode="112_klcb_hd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_klcb_720p" Desciption="辽宁广联-酷乐城堡-高清" ></productlist>
+  <productlist AreaCode="112_hlg_sd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_huanlegu" Desciption="辽宁广联-欢乐谷-标清" ></productlist>
+  <productlist AreaCode="112_hlg_hd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_huanlegu_720p" Desciption="辽宁广联-欢乐谷-高清" ></productlist>
+  <productlist AreaCode="112_myd_sd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_manyoudao" Desciption="辽宁广联-漫游岛-标清" ></productlist>
+  <productlist AreaCode="112_myd_hd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_manyoudao_720p" Desciption="辽宁广联-漫游岛-高清" ></productlist>
+  <productlist AreaCode="112_ktly_ppv_sd" APIService="http://202.97.183.39:8400/FLAdminSystem/APIService_PPV" Desciption="辽宁广联-卡通乐园-标清" ></productlist>
+  <productlist AreaCode="112_ktly_ppv_hd" APIService="http://202.97.183.39:8400/FLAdminSystem_720p/APIService_PPV" Desciption="辽宁广联-卡通乐园-高清" ></productlist>
+  <productlist AreaCode="112_qqw_sd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_qiquwu" Desciption="辽宁广联-奇趣屋-标清" ></productlist>
+  <productlist AreaCode="112_qqw_hd" APIService="http://202.97.183.39:8400/FLAdminSystem_BaoYue_qiquwu_720p" Desciption="辽宁广联-奇趣屋-高清" ></productlist>
+
+
+
+  <productlist AreaCode="134_dmld" APIService="http://222.221.9.51:10000/FLAdminSystem_BaoYue" Desciption="云南电信-动漫乐斗" ></productlist>
+  <productlist AreaCode="116_dmld" APIService="http://118.180.22.2:8400/FLAdminSystem_BaoYue" Desciption="甘肃电信-动漫乐斗" ></productlist>
+
+
+
+
+  <productlist AreaCode="103_bsthd_ppv" APIService="http://112.124.23.127:33015/PortalAdminSystem_bsthd/APIService_PPV" Desciption="湖北电信-百事通高清-PPV" ></productlist>
+  <productlist AreaCode="103_bstsd_ppv" APIService="http://112.124.23.127:33015/PortalAdminSystem_bstsd/APIService_PPV" Desciption="湖北电信-百事通标清-PPV" ></productlist>
+  <productlist AreaCode="103_gd4k_ppv" APIService="http://112.124.23.127:33015/PortalAdminSystem_gd4k/APIService_PPV" Desciption="湖北电信-广电4K-PPV" ></productlist>
+  <productlist AreaCode="103_gdhd_ppv" APIService="http://112.124.23.127:33015/PortalAdminSystem_gdhd/APIService_PPV" Desciption="湖北电信-广电高清-PPV" ></productlist>
+  <productlist AreaCode="103_gdsd_ppv" APIService="http://112.124.23.127:33015/PortalAdminSystem_gdsd/APIService_PPV" Desciption="湖北电信-广电标清-PPV" ></productlist>
+
+
+  <productlist AreaCode="174_djfb_apk" APIService="http://112.124.23.127:32713/ESAdminSystem" Desciption="福建移动-电竞" ></productlist>
+
+
+  <productlist AreaCode="173_djfb_apk" APIService="http://111.23.12.135:8400/ESAdminSystem" Desciption="湖南移动-电竞" ></productlist>
+
+
+  <productlist AreaCode="180_djfb_apk" APIService="http://escqyd.sjgame.net:8400/ESAdminSystem" Desciption="重庆移动-电竞" ></productlist>
+
+
+  <productlist AreaCode="177_dmld_epg" APIService="http://124.132.254.202:8400/FLAdminSystem_BaoYue_hd" Desciption="山东联通-动漫乐斗" ></productlist>
+  <productlist AreaCode="177_hlg_epg" APIService="http://124.132.254.202:8400/FLAdminSystem_hlg_hd" Desciption="山东联通-欢乐谷" ></productlist>
+  <productlist AreaCode="177_myd_epg" APIService="http://124.132.254.202:8400/FLAdminSystem_myd_hd" Desciption="山东联通-漫游岛" ></productlist>
+
+
+</AreaCodeData>
