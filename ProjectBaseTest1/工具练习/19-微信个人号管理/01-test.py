@@ -6,7 +6,7 @@ if __name__=='__main__':
     # 初始化机器人，扫码登录
     bot=Bot()
 
-    my_friend=bot.friends().search('张雪')[0]
+    my_friend=bot.friends().search('张三')[0]
 
     print(my_friend)
 
