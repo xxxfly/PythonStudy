@@ -3,15 +3,67 @@
 是小弟学习过程中的练习代码。
 
 ---
-### python 基础
-学习资源主要是 [廖雪峰的博客](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)  
-还有其他培训视频  
-
-文件目录：ProjectBaseTest1/Python基础       
 
 ### 思维导图
 是用画思维导图的方式对所学知识点进行整理，有助于理解。  
-文件目录：思维导图
+文件目录：思维导图  
+内容： 
+- python总体结构
+- 数据结构
+
+### python 基础
+学习资源主要是 [廖雪峰的博客](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)  
+还有其他网络视频  
+
+文件目录：ProjectBaseTest1/Python基础       
+内容：  
+- 01-函数defFunction
+- 02-基础函数baseFunction
+- 03-高级特性highFeatures
+- 04-函数式编程functionProgram
+- 05-模块hello
+- 06-面向对象OPP
+- 07-面向对象高级编程OPPHigh
+- 08-错误调试ErrorDebugTest
+- 09-IO编程IOProgram
+- 10-进程和线程process_thread
+- 11-正则表达式regex
+- 12-内建模块includeModule
+- 13-三方模块otherModule
+- 14-网络编程NetPorgram
+- 15-电子邮件emailTest
+- 16-访问数据库dataBaseTest
+- 17-Web开发WebServiceTest
+- 18-异步IO-asyncIOTest
+
+### python 高级
+python 深入学习  
+学习来源还是[廖雪峰的博客](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)    
+还有部分是针对知识点去网上找的博客  
+文件路径：ProjectBaseTest1/Python高级  
+内容
+- 02-模块循环导入
+- 03-深拷贝和浅拷贝
+- 04-不同进制的讲解
+- 05-私有化
+- 06-Property属性
+- 07-迭代器
+- 08-闭包
+- 09-装饰器
+- 10-作用域
+- 11-动态添加属性和方法
+- 12-生成器  
+
+
+### python核心编程
+文件路径：ProjectBaseTest1/python核心编程  
+- 01-生成器-闭包-装饰器
+- 02-高级3-元类
+- 03-linux系统编程
+- 04-网络编程
+- 05-服务器
+- 06-web服务器
+- 07-正则表达式
 
 ### 工具练习
 这里是一些对 网上部分项目 的练习。  
