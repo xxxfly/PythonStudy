@@ -8,8 +8,21 @@
 是用画思维导图的方式对所学知识点进行整理，有助于理解。  
 文件目录：思维导图  
 内容： 
-- python总体结构
-- 数据结构
+- Python基础结构
+- Python数据结构  
+- Python表达式  
+- Python函数  
+- Python常用模块  
+- Python进程和线程  
+- Python面向对象  
+- Web 框架-Django  
+- 爬虫  
+- 数据库-MySQL  
+- 数据库 Redis  
+- 数据库 MongoDB  
+- Linux使用基础  
+- Vim 编辑器  
+- Shell 脚本  
 
 ### python 基础
 学习资源主要是 [廖雪峰的博客](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)  
