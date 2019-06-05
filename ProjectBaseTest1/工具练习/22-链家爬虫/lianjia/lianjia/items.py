@@ -15,7 +15,16 @@ class LianjiaItem(scrapy.Item):
 
 class WhlianjiachengjiaoSpiderItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    url=scrapy.Field()
+    name = scrapy.Field()
+    totalPrice=scrapy.Field()
+    houseInfo=scrapy.Field()
+    dealDate=scrapy.Field()
+    positionInfo=scrapy.Field()
+    dealHouseInfo=scrapy.Field()
+    dealCycleeInfo=scrapy.Field()
+    onPrice=scrapy.Field()
+    
+    
 
 
