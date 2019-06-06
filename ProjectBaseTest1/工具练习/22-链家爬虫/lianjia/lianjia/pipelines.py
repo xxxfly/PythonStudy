@@ -12,13 +12,20 @@ class LianjiaPipeline(object):
         host=settings['MONGODB_HOST']
         port = settings["MONGODB_PORT"]
         dbname = settings["MONGODB_DBNAME"]
-        sheetname = settings["MONGODB_SHEETNAME"]
+        # sheetname = "whlianjiachengjiao"
         # 创建 MongoDB 数据库连接
         client=pymongo.MongoClient("mongodb://%s:%s@%s:%s/%s"%('spider_data','spider_data',host,port,dbname))
-        db=client[dbname]
-        self.collections=db[sheetname]
+        self.db=client[dbname]
+        # self.collections=db[sheetname]
 
     def process_item(self, item, spider):
         data=dict(item)
-        self.collections.insert_one(data)
+        print('spider-name'+spider.name)
+        if  spider.name=="whlianjiachengjiao":
+            collections=self.db['whlianjiachengjiao']
+            collections.insert_one(data)
+        if spider.name=="whlianjiaershoufang":
+            collections=self.db['whlianjiaershoufang']
+            collections.insert_one(data)
+        
         return item
