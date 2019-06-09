@@ -17,14 +17,18 @@ class LianjiaItem(scrapy.Item):
 class WhlianjiachengjiaoSpiderItem(scrapy.Item):
     # define the fields for your item here like:
     url=scrapy.Field()
-    name = scrapy.Field()
-    totalPrice=scrapy.Field()
-    houseInfo=scrapy.Field()
-    dealDate=scrapy.Field()
-    positionInfo=scrapy.Field()
-    dealHouseInfo=scrapy.Field()
-    dealCycleeInfo=scrapy.Field()
-    onPrice=scrapy.Field()
+    title = scrapy.Field() # 标题
+    dealPrice=scrapy.Field() # 成交价格
+    unitPrice=scrapy.Field() # 单价
+    dealDate=scrapy.Field() # 成交日期
+    onPrice=scrapy.Field() # 挂牌价格    
+    communityName=scrapy.Field() # 小区名称
+    houseType=scrapy.Field() # 房屋类型
+    houseSize=scrapy.Field() # 房屋面积
+    houseDirection=scrapy.Field() # 房屋朝向
+    houseDecoration=scrapy.Field() # 装修情况
+    houseFlood=scrapy.Field() # 楼层 年代  
+    dealCycleDay=scrapy.Field() # 挂牌周期
 
 # 正在销售的二手房
 class WhlianjiaershoufangSpiderItem(scrapy.Item):

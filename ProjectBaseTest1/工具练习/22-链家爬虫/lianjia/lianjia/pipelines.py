@@ -22,9 +22,11 @@ class LianjiaPipeline(object):
         data=dict(item)
         print('spider-name'+spider.name)
         if  spider.name=="whlianjiachengjiao":
+            #成交数据表
             collections=self.db['whlianjiachengjiao']
             collections.insert_one(data)
         if spider.name=="whlianjiaershoufang":
+            # 在售的二手房数据表
             collections=self.db['whlianjiaershoufang']
             collections.insert_one(data)
         

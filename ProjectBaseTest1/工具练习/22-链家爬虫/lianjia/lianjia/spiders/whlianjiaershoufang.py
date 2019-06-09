@@ -45,7 +45,7 @@ class WhlianjiaershoufangSpider(scrapy.Spider):
             houseInfo=info_item.css('div.houseInfo::text').extract_first()
             houseInfoList=houseInfo.split(" | ")
             if len(houseInfoList)>4:
-                if houseInfoList[2].find('室')>-1:
+                if houseInfoList[1].find('室')>-1:
                     item['houseType']=houseInfoList[1].rstrip().lstrip()
                     item['houseSize']=houseInfoList[2].rstrip().lstrip().replace('平米','')
                     item['houseDirection']=houseInfoList[3].rstrip().lstrip()
