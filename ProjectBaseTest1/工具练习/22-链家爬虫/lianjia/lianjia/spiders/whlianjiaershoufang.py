@@ -40,8 +40,8 @@ class WhlianjiaershoufangSpider(scrapy.Spider):
             item['url']=info_item.css('a.noresultRecommend::attr(href)').extract_first()
             item['title']=info_item.css('div.title>a::text').extract_first()
             item['houseArea']=area
-            item['onPrice']=info_item.css('div.totalPrice>span::text').extract_first()
-            item['unitPrice']=info_item.css('div.unitPrice::attr(data-price)').extract_first()
+            item['onPrice']=float(info_item.css('div.totalPrice>span::text').extract_first())
+            item['unitPrice']=float(info_item.css('div.unitPrice::attr(data-price)').extract_first())
             item['communityName']=info_item.css('div.houseInfo>a::text').extract_first()
             
             houseInfo=info_item.css('div.houseInfo::text').extract_first()
@@ -49,12 +49,12 @@ class WhlianjiaershoufangSpider(scrapy.Spider):
             if len(houseInfoList)>4:
                 if houseInfoList[1].find('室')>-1:
                     item['houseType']=houseInfoList[1].rstrip().lstrip()
-                    item['houseSize']=houseInfoList[2].rstrip().lstrip().replace('平米','')
+                    item['houseSize']=float(houseInfoList[2].rstrip().lstrip().replace('平米',''))
                     item['houseDirection']=houseInfoList[3].rstrip().lstrip()
                     item['houseDecoration']=houseInfoList[4].rstrip().lstrip()
                 else:
                     item['houseType']=houseInfoList[1].rstrip().lstrip()+'-'+houseInfoList[2].rstrip().lstrip()
-                    item['houseSize']=houseInfoList[3].rstrip().lstrip().replace('平米','')
+                    item['houseSize']=float(houseInfoList[3].rstrip().lstrip().replace('平米',''))
                     item['houseDirection']=houseInfoList[4].rstrip().lstrip()
                     item['houseDecoration']=houseInfoList[5].rstrip().lstrip()
                 

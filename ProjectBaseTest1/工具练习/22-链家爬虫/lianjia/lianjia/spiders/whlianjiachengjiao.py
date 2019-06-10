@@ -49,25 +49,25 @@ class WhlianjiachengjiaoSpider(scrapy.Spider):
                 if len(titleList)>2:
                     item['communityName']=titleList[0]
                     item['houseType']=titleList[1]
-                    item['houseSize']=titleList[2].replace('平米','')
+                    item['houseSize']=float(titleList[2].replace('平米',''))
                 
-                item['dealPrice']=info_item.css('div.totalPrice>span.number::text').extract_first()
-                item['unitPrice']=info_item.css('div.unitPrice>span.number::text').extract_first()
+                item['dealPrice']=float(info_item.css('div.totalPrice>span.number::text').extract_first())
+                item['unitPrice']=float(info_item.css('div.unitPrice>span.number::text').extract_first())
                 item['dealDate']=info_item.css('div.dealDate::text').extract_first().replace('.','-')
 
                 onPrice=info_item.css('div.dealCycleeInfo>span.dealCycleTxt>span:nth-child(1)::text').extract_first()
                 re_onPrice=re.findall(r'\d+',onPrice)
                 if len(re_onPrice)>0:
-                    item['onPrice']=re_onPrice[0]
+                    item['onPrice']=float(re_onPrice[0])
                 else:
-                    item['onPrice']='0'
+                    item['onPrice']=0.0
 
                 dealCycleDay=info_item.css('div.dealCycleeInfo>span.dealCycleTxt>span:nth-child(2)::text').extract_first()
                 re_dealCycleDay=re.findall(r'\d+',dealCycleDay)
                 if len(re_dealCycleDay)>0:
-                    item['dealCycleDay']=re_dealCycleDay[0]
+                    item['dealCycleDay']=int(re_dealCycleDay[0])
                 else:
-                    item['dealCycleDay']='0'
+                    item['dealCycleDay']=0
                  
                 houseInfo=info_item.css('div.houseInfo::text').extract_first()
                 houseInfoList=houseInfo.split(' | ')
@@ -92,16 +92,16 @@ class WhlianjiachengjiaoSpider(scrapy.Spider):
         if len(titleList)>2:
             item['communityName']=titleList[0]
             item['houseType']=titleList[1]
-            item['houseSize']=titleList[2].replace('平米','') 
+            item['houseSize']=float(titleList[2].replace('平米',''))
 
 
-        item['dealPrice']=response.css('span.dealTotalPrice>i::text').extract_first()
-        item['unitPrice']=response.css('div.overview>div.info>div.price>b::text').extract_first()
+        item['dealPrice']=float(response.css('span.dealTotalPrice>i::text').extract_first())
+        item['unitPrice']=float(response.css('div.overview>div.info>div.price>b::text').extract_first())
 
         item['dealDate']=response.css('div.house-title>div.wrapper>span::text').extract_first().replace('.','-').replace('成交','').rstrip()
 
-        item['onPrice']=response.css('div.overview>div.info>div.msg>span:nth-child(1)>label::text').extract_first()
-        item['dealCycleDay']=response.css('div.overview>div.info>div.msg>span:nth-child(2)>label::text').extract_first()
+        item['onPrice']=float(response.css('div.overview>div.info>div.msg>span:nth-child(1)>label::text').extract_first())
+        item['dealCycleDay']=int(response.css('div.overview>div.info>div.msg>span:nth-child(2)>label::text').extract_first())
 
         introContent=response.css('div.introContent')
         item['houseFlood']=introContent.css('ul>li:nth-child(2)::text').extract_first().rstrip()+introContent.css('ul>li:nth-child(8)::text').extract_first().rstrip()+introContent.css('ul>li:nth-child(6)::text').extract_first().rstrip()

@@ -66,8 +66,9 @@ class MongoDBHelper(object):
         return count
         
 
-
+# 将mongodb 数据导入 mysql
 def copyChenJiaoData():    
+    '''成交数据'''
     mongo=MongoDBHelper('127.0.0.1',27017,'spider_data','spider_data','spider_data')
     params=[]
     mysql=MySqlHelper('127.0.0.1',3306,'spider_data','spider_data','spider_data')
@@ -78,14 +79,14 @@ def copyChenJiaoData():
     page_index=1
     page_number=totalCount//page_size+1
     
-    for i in range(2,page_number+1):
+    for i in range(1,page_number+1):
         result=mongo.getAllbyPage('whlianjiachengjiao',page_size,i)
         for item in result:
             print('-url:%s'%(item['url']))
             try:
-                param=((item['url'],item['title'],item['communityName'],item['houseType'],item['houseSize'],item['dealPrice'],item['unitPrice'],item['dealDate'],item['onPrice'],item['dealCycleDay'],item['houseDirection'],item['houseDecoration'],item['houseFlood']))
+                param=((item['url'],item['title'],item['houseArea'],item['communityName'],item['houseType'],item['houseSize'],item['dealPrice'],item['unitPrice'],item['dealDate'],item['onPrice'],item['dealCycleDay'],item['houseDirection'],item['houseDecoration'],item['houseFlood']))
 
-                sql='insert into whlianjiachengjiao(url,title,communityName,houseType,houseSize,dealPrice,unitPrice,dealDate,onPrice,dealCycleDay,houseDirection,houseDecoration,houseFlood) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+                sql='insert into whlianjiachengjiao(url,title,houseArea,communityName,houseType,houseSize,dealPrice,unitPrice,dealDate,onPrice,dealCycleDay,houseDirection,houseDecoration,houseFlood) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 
                 cur_count=mysql.cud(sql,param)
 
@@ -93,12 +94,45 @@ def copyChenJiaoData():
                 print('---出错---:%s'%(item['url']))
                 print(ex)
                 # 记录错误文件
-                with open('error.txt','a',encoding='utf-8') as f:
+                with open('chengjiao_error.txt','a',encoding='utf-8') as f:
                     f.write(item['url']+'\r\n')               
             # params.append(param)
+
+
+# 将mongodb 数据导入 mysql
+def copyErShouFangData():
+    '''二手房代售数据'''
+    mongo=MongoDBHelper('127.0.0.1',27017,'spider_data','spider_data','spider_data')
+
+    mysql=MySqlHelper('127.0.0.1',3306,'spider_data','spider_data','spider_data')
+
+    totalCount=mongo.getCount('whlianjiaershoufang')
+    page_size=100
+    page_index=1
+    page_number=totalCount//page_size+1
+
+    for i in range(1,page_number+1):
+        cursor_result=mongo.getAllbyPage('whlianjiaershoufang',page_size,i)
+        for item in cursor_result:
+            print('-url:%s'%(item['url']))
+            try:
+                param=((item['url'],item['title'],item['onPrice'],item['unitPrice'],item['houseArea'],item['communityName'],item['houseType'],item['houseSize'],['houseDirection'],item['houseDecoration'],item['houseFlood'],item['housePosition'],item['visit'],item['onDate']))
+                
+                sql='insert into whlianjiaershoufang(url,title,onPrice,unitPrice,houseArea,communityName,houseType,houseSize,houseDirection,houseDecoration,houseFlood,housePosition,visit,onDate) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+
+                cur_count=mysql.cud(sql,param)
+            except Exception as ex:
+                print('---出错---:%s'%(item['url']))
+                print(ex)
+                # 记录错误文件
+                with open('ershoufang_error.txt','a',encoding='utf-8') as f:
+                    f.write(item['url']+'\r\n')  
+
 
     
 
 if __name__ == '__main__':
-    copyChenJiaoData()
+    pass
+    # copyChenJiaoData()
+    # copyErShouFangData()
  
