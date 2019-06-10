@@ -29,6 +29,7 @@ class WhlianjiachengjiaoSpiderItem(scrapy.Item):
     houseDecoration=scrapy.Field() # 装修情况
     houseFlood=scrapy.Field() # 楼层 年代  
     dealCycleDay=scrapy.Field() # 挂牌周期
+    houseArea=scrapy.Field() # 小区 区域
 
 # 正在销售的二手房
 class WhlianjiaershoufangSpiderItem(scrapy.Item):
@@ -43,6 +44,7 @@ class WhlianjiaershoufangSpiderItem(scrapy.Item):
     houseDecoration=scrapy.Field() # 装修情况
     houseFlood=scrapy.Field() # 楼层 年代
     housePosition=scrapy.Field() # 小区 位置
+    houseArea=scrapy.Field() # 小区 区域
     onDate=scrapy.Field() # 发布日期
     visit=scrapy.Field() # 带看次数
     

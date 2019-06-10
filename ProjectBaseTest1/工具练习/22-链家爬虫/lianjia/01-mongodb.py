@@ -94,35 +94,11 @@ def copyChenJiaoData():
                 print(ex)
                 # 记录错误文件
                 with open('error.txt','a',encoding='utf-8') as f:
-                    f.write(item['url']+'\r\n')
-            
-            
-
-            
-            
+                    f.write(item['url']+'\r\n')               
             # params.append(param)
-
-    
-    
-    
-    
-
 
     
 
 if __name__ == '__main__':
     copyChenJiaoData()
-    
-
-
-    
-    
-
-
-
-
-
-
-# u1_ObjectID=whlianjiachengjiao.insert_one({'name':'小明','gender':True,'age':21})
-
-# print(str(u1_ObjectID))
+ 

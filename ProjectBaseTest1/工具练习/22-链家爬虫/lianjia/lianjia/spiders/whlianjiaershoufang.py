@@ -19,29 +19,31 @@ class WhlianjiaershoufangSpider(scrapy.Spider):
     # 该方法必须返回一个可迭代对象(iterable)
     # 该对象包含了spider用于爬取的第一个Request
     def start_requests(self):
-        urls=[]
+  
         for area in self.condition_area:
-            urls.append(self.start_urls[0]+area+'/')
-        for url in urls:
-            yield scrapy.Request(url=url,callback=self.parse,dont_filter=True)
-   
+            req_url=self.start_urls[0]+area+'/'
+            yield scrapy.Request(url=req_url,callback=self.parse,dont_filter=True,meta={'area':area})
+               
     def parse(self, response):
         res_url=response.url
+        area=response.meta['area']
         for p in self.condition_price:
             for i in range(1,101):
                 req_url=res_url+'pg'+str(i)+p+'/'
-                yield scrapy.Request(url=req_url,callback=self.parse_item,dont_filter=True)
+                yield scrapy.Request(url=req_url,callback=self.parse_item,dont_filter=True,meta={'area':area})
     
     def parse_item(self, response):
-        print('--------------parse_item----------------')
+        res_url=response.url
+        area=response.meta['area']
         for info_item in response.css('.sellListContent>li'):
             item=WhlianjiaershoufangSpiderItem()
             item['url']=info_item.css('a.noresultRecommend::attr(href)').extract_first()
             item['title']=info_item.css('div.title>a::text').extract_first()
+            item['houseArea']=area
             item['onPrice']=info_item.css('div.totalPrice>span::text').extract_first()
             item['unitPrice']=info_item.css('div.unitPrice::attr(data-price)').extract_first()
             item['communityName']=info_item.css('div.houseInfo>a::text').extract_first()
-
+            
             houseInfo=info_item.css('div.houseInfo::text').extract_first()
             houseInfoList=houseInfo.split(" | ")
             if len(houseInfoList)>4:

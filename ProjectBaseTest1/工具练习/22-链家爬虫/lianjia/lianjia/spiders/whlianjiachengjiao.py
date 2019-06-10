@@ -17,32 +17,33 @@ class WhlianjiachengjiaoSpider(scrapy.Spider):
     # 该方法必须返回一个可迭代对象(iterable)
     # 该对象包含了spider用于爬取的第一个Request
     def start_requests(self):
-        urls=[]
         for area in self.condition_area:
-            urls.append(self.start_urls[0]+area+'/')
-        for url in urls:
-            yield scrapy.Request(url=url,callback=self.parse,dont_filter=True)
-
+            req_url=self.start_urls[0]+area+'/'
+            yield scrapy.Request(url=req_url,callback=self.parse,dont_filter=True,meta={'area':area})
+          
     def parse(self, response):     
         res_url=response.url
+        area=response.meta['area']
         for p in self.condition_price:  # 价格范围条件
             for i in range(1,101):  # 循环页码
                 req_url=res_url+'pg'+str(i)+p+'/'
-                yield scrapy.Request(url=req_url,callback=self.parse_loop,dont_filter=True)
+                yield scrapy.Request(url=req_url,callback=self.parse_loop,dont_filter=True,meta={'area':area})
         
     def parse_loop(self,response):
         res_url=response.url
+        area=response.meta['area']
         for info_item in response.css('.listContent>li'):            
             # 验证info_item 是否影藏实际价格
             totalPrice=info_item.css('div.totalPrice>span.number::text').extract_first()
             detail_url=info_item.css('a.img::attr(href)').extract_first()
             if totalPrice.find('*')>-1:
-                yield scrapy.Request(url=detail_url,callback=self.parse_item,dont_filter=True)
+                yield scrapy.Request(url=detail_url,callback=self.parse_item,dont_filter=True,meta={'area':area})
             else:
                 item=WhlianjiachengjiaoSpiderItem()
                 item['url']=detail_url
                 title=info_item.css('div.title>a::text').extract_first()
                 item['title']=title
+                item['houseArea']=area
 
                 titleList=title.split(' ')
                 if len(titleList)>2:
@@ -77,14 +78,14 @@ class WhlianjiachengjiaoSpider(scrapy.Spider):
 
                 yield item
  
-
-
         
     def parse_item(self,response):
         res_url=response.url
+        area=response.meta['area']
+
         item=WhlianjiachengjiaoSpiderItem()
         item['url']=res_url
-
+        item['houseArea']=area
         title=response.css('div.house-title>div.wrapper::text').extract_first()  
         item['title']=title
         titleList=title.split(' ')
