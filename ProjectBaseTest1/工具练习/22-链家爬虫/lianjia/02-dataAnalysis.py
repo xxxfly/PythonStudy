@@ -85,23 +85,98 @@ def cjPriceTrend():
     # print(attr)
     # print(v_unit)
 
-    line=(
-        Line()
-        .add_xaxis(attr[18:])
-        .add_yaxis('单价',v_unit[18:])
-        .set_global_opts(title_opts=opts.TitleOpts(title='武汉单价趋势'))
+    # 单价
+    line1=(
+        Line(init_opts=opts.InitOpts(width="100%"))
+        .add_xaxis(attr)
+        .add_yaxis('单价',v_unit)
+        .set_global_opts(title_opts=opts.TitleOpts(title='武汉单价趋势',pos_right='20%'),
+        toolbox_opts=opts.ToolboxOpts(is_show=True),
+        datazoom_opts=opts.DataZoomOpts(is_show=True))
     )
-    line.render('01.html')
+    line1.render('01.html')
 
-    # line=(
-    #     Line()
-    #     .add_xaxis(attr[18:])
-    #     .add_yaxis('成交价格/万',v_dealPrice[18:])
-    #      .add_yaxis('挂牌价格/万',v_onPrice[18:])
-    #     .set_global_opts(title_opts=opts.TitleOpts(title='武汉交易均价趋势'))
-    # )
-    # line.render('02.html')
+    # 成交价格
+    line2=(
+        Line(init_opts=opts.InitOpts(width="100%"))
+        .add_xaxis(attr)
+        .add_yaxis('成交价格/万',v_dealPrice)
+         .add_yaxis('挂牌价格/万',v_onPrice)
+        .set_global_opts(title_opts=opts.TitleOpts(title='武汉交易均价趋势',pos_right='20%'),
+        toolbox_opts=opts.ToolboxOpts(is_show=True),
+        datazoom_opts=opts.DataZoomOpts(is_show=True))
+    )
+    line2.render('02.html')
+
+def cjAreaPriceTrend():
+    '''地区成交价格趋势'''
+        # 获取mongodb 对象
+    mongo=MongoDBHelper('127.0.0.1',27017,'spider_data','spider_data','spider_data')
+    col=mongo.getCol('whlianjiachengjiao')
+
+    # 管道参数
+    pipe_args=[
+        {"$match":{
+                "houseArea":"donghugaoxin"
+            }
+        },
+        {"$project":{
+                "dealPrice":1,
+                "onPrice":1,
+                "unitPrice":1,
+                "month":{"$substr":["$dealDate",0,7]}
+            }
+        },
+        {"$group":{
+                "_id":"$month",
+                "avg_unit":{"$avg":"$unitPrice"},
+                "avg_dealPrice":{"$avg":"$dealPrice"},
+                "avg_onPrice":{"$avg":"$onPrice"}
+        }
+        },
+        {"$sort":{
+                "_id":1
+            }
+        }
+    ]
+
+    cur_result=col.aggregate(pipeline=pipe_args)
+    # for item in cur_result:
+    #     print('%s %.2f %.2f %.2f'%(item['_id'],item['avg_unit'],item['avg_dealPrice'],item['avg_onPrice']))
+
+    p_result=pd.DataFrame(list(cur_result))
+
+    attr=list(p_result['_id'])
+    v_dealPrice=list(map(lambda x:float('%.2f'%x),list(p_result['avg_dealPrice'])))
+    v_onPrice=list(map(lambda x:float('%.2f'%x),list(p_result['avg_onPrice'])))
+    v_unit=list(map(lambda x:float('%.2f'%x),list(p_result['avg_unit'])))
+    # print(attr)
+    # print(v_unit)
+
+    # 单价
+    line1=(
+        Line(init_opts=opts.InitOpts(width="100%"))
+        .add_xaxis(attr)
+        .add_yaxis('单价/元',v_unit)
+        .set_global_opts(title_opts=opts.TitleOpts(title='东湖高新',subtitle='武汉单价趋势',pos_right='20%'),
+        toolbox_opts=opts.ToolboxOpts(is_show=True),
+        datazoom_opts=opts.DataZoomOpts(is_show=True))
+    )
+    line1.render('01-donghugaoxin.html')
+
+    # 成交价格
+    line2=(
+        Line(init_opts=opts.InitOpts(width="100%"))
+        .add_xaxis(attr)
+        .add_yaxis('成交价格/万',v_dealPrice)
+        .add_yaxis('挂牌价格/万',v_onPrice)
+        .set_global_opts(title_opts=opts.TitleOpts(title='东湖高新',subtitle='武汉交易均价趋势',pos_right='20%'),
+        toolbox_opts=opts.ToolboxOpts(is_show=True),
+        datazoom_opts=opts.DataZoomOpts(is_show=True))
+    )
+    line2.render('02-donghugaoxin.html')
 
 if __name__ == '__main__':
     cjPriceTrend()
+    # cjAreaPriceTrend()
     
