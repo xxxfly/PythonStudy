@@ -132,7 +132,7 @@ def copyErShouFangData():
     
 
 if __name__ == '__main__':
-    pass
+    # pass
     # copyChenJiaoData()
-    # copyErShouFangData()
+    copyErShouFangData()
  
