@@ -29,5 +29,13 @@ class LianjiaPipeline(object):
             # 在售的二手房数据表
             collections=self.db['whlianjiaershoufang']
             collections.insert_one(data)
+        if spider.name=="hzlianjiachengjiao":
+            # 在售的二手房数据表
+            collections=self.db['hzlianjiachengjiao']
+            collections.insert_one(data)
+        if spider.name=="hzlianjiaershoufang":
+            # 在售的二手房数据表
+            collections=self.db['hzlianjiaershoufang']
+            collections.insert_one(data)
         
         return item
