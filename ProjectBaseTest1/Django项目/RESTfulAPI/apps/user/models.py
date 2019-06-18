@@ -58,7 +58,7 @@ class User(models.Model):
         return user
 
     class Meta:
-        managed = True # Django会自动根据模型类生成映射的数据库表，如果你不希望Django这么做，可以把managed的值设置为False
+        # managed = True # Django会自动根据模型类生成映射的数据库表，如果你不希望Django这么做，可以把managed的值设置为False
         ordering = ['-create_date']
         verbose_name = '用户'
         verbose_name_plural = '用户'

@@ -1,14 +1,38 @@
 from django.shortcuts import render
-from  django.http import  HttpResponse
+from django.http import HttpResponse
+from  datetime import  datetime
 
 # Create your views here.
 
+
 def home(request):
-    return HttpResponse('<h1>home</h1>')
+    param={
+        'title': "主页",
+        'year': datetime.now().year
+    }
+    return render(request, 'user/index.html', param)
+
 
 def about(request):
-    return HttpResponse('<h1>about</h1>')
+    param = {
+        'title': "about",
+        'year': datetime.now().year
+    }
+    return render(request, 'user/about.html', param)
 
-def add(request,id):
-    uid=id
-    return HttpResponse('<h1>%s</h1>'%(uid))
+
+def contact(request):
+    param = {
+        'title': "about",
+        'year': datetime.now().year
+    }
+    return render(request, 'user/contact.html', param)
+
+
+def loginpartial(request):
+    return render(request, 'user/loginpartial.html')
+
+
+def add(request, id):
+    uid = id
+    return HttpResponse('<h1>%s</h1>' % (uid,))
