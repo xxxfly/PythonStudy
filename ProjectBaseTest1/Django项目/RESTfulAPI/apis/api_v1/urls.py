@@ -3,9 +3,7 @@
 from django.conf.urls import url
 from .user import views as api_user
 
-
-
-urlpatterns =[
+urlpatterns = [
     url(r'^user/$', api_user.user, name='user')
 ]
 

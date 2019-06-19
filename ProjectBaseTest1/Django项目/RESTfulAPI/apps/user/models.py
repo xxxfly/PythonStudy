@@ -7,7 +7,7 @@ class User(models.Model):
     用户信息表
     """
 
-    user_id=models.AutoField(primary_key=True,verbose_name='用户ID')
+    user_id = models.AutoField(primary_key=True,verbose_name='用户ID')
     user_guid = models.CharField(max_length=150, verbose_name='用户guid')
     user_name = models.CharField(
         max_length=100, blank=True, null=True, verbose_name='用户名')

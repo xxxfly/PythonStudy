@@ -23,7 +23,7 @@ def about(request):
 
 def contact(request):
     param = {
-        'title': "about",
+        'title': "contact",
         'year': datetime.now().year
     }
     return render(request, 'user/contact.html', param)
@@ -34,5 +34,7 @@ def loginpartial(request):
 
 
 def add(request, id):
-    uid = id
-    return HttpResponse('<h1>%s</h1>' % (uid,))
+    param = {
+        'uid': id
+    }
+    return render(request, 'user/useradd.html', param)

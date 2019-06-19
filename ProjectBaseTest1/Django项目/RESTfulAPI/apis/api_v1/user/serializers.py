@@ -11,6 +11,12 @@ class GetUserSerializer(serializers.Serializer):
     """
     token = serializers.CharField(max_length=150)
     user_id = serializers.IntegerField()
+    user_guid = serializers.CharField(max_length=150)
+    user_name = serializers.CharField(max_length=100)
+    real_name = serializers.CharField(max_length=100)
+    mobile = serializers.CharField(max_length=50)
+    balance = serializers.DecimalField(max_digits=8, decimal_places=2)
+    available_balance = serializers.DecimalField(max_digits=8, decimal_places=2)
 
     def get_user(self, validated_data):
         result = dict()
@@ -26,6 +32,33 @@ class GetUserSerializer(serializers.Serializer):
 
         result["nick_name"] = user.user_name
         result["avatar"] = user.avatar
+        result["error_code"] = ErrorCode.正确.value
+        result["error"] = ""
+        return result
+
+    def add_user(self, validated_data):
+        result = dict()
+        print(validated_data)
+        # 新增用户
+        try:
+            new_user = User(
+                user_guid=validated_data['user_guid'],
+                user_name=validated_data['user_name'],
+                real_name=validated_data['real_name'],
+                mobile=validated_data['mobile'],
+                balance=validated_data['balance'],
+                available_balance=validated_data['available_balance']
+            )
+            new_user.save()
+
+        except Exception as ex:
+            print('--------------------')
+            print(ex)
+            print('--------------------')
+            result["error_code"] = ErrorCode.用户不存在.value
+            result["error"] = ''
+            return result
+
         result["error_code"] = ErrorCode.正确.value
         result["error"] = ""
         return result
