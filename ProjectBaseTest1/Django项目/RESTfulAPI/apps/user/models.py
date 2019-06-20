@@ -7,7 +7,7 @@ class User(models.Model):
     用户信息表
     """
 
-    user_id = models.AutoField(primary_key=True,verbose_name='用户ID')
+    user_id = models.AutoField(primary_key=True, verbose_name='用户ID')
     user_guid = models.CharField(max_length=150, verbose_name='用户guid')
     user_name = models.CharField(
         max_length=100, blank=True, null=True, verbose_name='用户名')
@@ -43,7 +43,7 @@ class User(models.Model):
     is_notify = models.IntegerField(blank=True, null=True, verbose_name='是否开启打卡通知')
 
     @classmethod
-    def update_user_balance(cls,user_id,amount):
+    def update_user_balance(cls, user_id, amount):
         with transaction.atomic():
             user=(
                 cls.objects
@@ -65,12 +65,12 @@ class User(models.Model):
 
 
 class Student(models.Model):
-    s_id=models.CharField(primary_key=True,max_length=32,verbose_name='学生ID')
-    s_name=models.CharField(max_length=20,verbose_name='学生姓名')
-    s_age=models.IntegerField(verbose_name='学生年龄')
-    s_sex=models.IntegerField(default=0,verbose_name='性别 0 男  1 女')
-    s_class=models.IntegerField(verbose_name='班级')
+    s_id = models.CharField(primary_key=True, max_length=32, verbose_name='学生ID')
+    s_name = models.CharField(max_length=20, verbose_name='学生姓名')
+    s_age = models.IntegerField(verbose_name='学生年龄')
+    s_sex = models.IntegerField(default=0, verbose_name='性别 0 男  1 女')
+    s_class = models.IntegerField(verbose_name='班级')
 
-    class Meta():
+    class Meta:
         verbose_name = '学生信息'
         verbose_name_plural = verbose_name

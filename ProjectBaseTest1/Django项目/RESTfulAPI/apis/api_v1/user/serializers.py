@@ -11,12 +11,7 @@ class GetUserSerializer(serializers.Serializer):
     """
     token = serializers.CharField(max_length=150)
     user_id = serializers.IntegerField()
-    user_guid = serializers.CharField(max_length=150)
-    user_name = serializers.CharField(max_length=100)
-    real_name = serializers.CharField(max_length=100)
-    mobile = serializers.CharField(max_length=50)
-    balance = serializers.DecimalField(max_digits=8, decimal_places=2)
-    available_balance = serializers.DecimalField(max_digits=8, decimal_places=2)
+
 
     def get_user(self, validated_data):
         result = dict()
@@ -35,6 +30,19 @@ class GetUserSerializer(serializers.Serializer):
         result["error_code"] = ErrorCode.正确.value
         result["error"] = ""
         return result
+
+
+class AddUserSerializer(serializers.Serializer):
+    """
+    新增用户
+    """
+    token = serializers.CharField(max_length=150)
+    user_guid = serializers.CharField(max_length=150)
+    user_name = serializers.CharField(max_length=100)
+    real_name = serializers.CharField(max_length=100)
+    mobile = serializers.CharField(max_length=50)
+    balance = serializers.DecimalField(max_digits=8, decimal_places=2)
+    available_balance = serializers.DecimalField(max_digits=8, decimal_places=2)
 
     def add_user(self, validated_data):
         result = dict()
