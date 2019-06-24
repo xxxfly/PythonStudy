@@ -10,3 +10,20 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+    var param={
+        'sign':'123',
+        'page_size':30,
+        'page_index':2,
+        'search_condition':JSON.stringify(['恒大']),
+        'selected_condition':JSON.stringify(['hanyang'])
+    }
+    $.post('/api/v1/lianjia/',param,function(result){
+        console.info(result)
+    },'JSON')
+</script>
+
+{% endblock %}
