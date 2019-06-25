@@ -41,6 +41,28 @@ def contact(request):
         'year': datetime.now().year
     })
 
+def login(request):
+    """
+    登录
+    :param request:
+    :return:
+    """
+    return render(request, 'lianjia/login.html', {
+        'title': '登录',
+        'year': datetime.now().year
+    })
+
+def register(request):
+    """
+    注册
+    :param request:
+    :return:
+    """
+    return render(request, 'lianjia/register.html', {
+        'title': '注册',
+        'year': datetime.now().year
+    })
+
 
 def cj_list(request, area):
     """

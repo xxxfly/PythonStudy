@@ -4,6 +4,7 @@ from apps.lianjia.models import whlianjiachengjiao
 from ..enum import ErrorCode
 from ..base import BaseApi
 from django.core.serializers import serialize
+import json
 
 
 class GetCJPageListSerializer(serializers.Serializer):
@@ -31,9 +32,14 @@ class GetCJPageListSerializer(serializers.Serializer):
             selected_condition_list = eval(validated_data['selected_condition'])  # 选择条件列表
 
             searchName = search_condition_list[0]
+            selectedArea = selected_condition_list[0]
+
             whlianjiachengjiao_list = whlianjiachengjiao.objects.all().order_by('dealDate')
             if searchName != '' and searchName != None:
                 whlianjiachengjiao_list = whlianjiachengjiao_list.filter(title__contains=searchName)
+
+            if selectedArea != '' and selectedArea != '000':
+                whlianjiachengjiao_list = whlianjiachengjiao_list.filter(houseArea__contains=selectedArea)
 
             total_count = whlianjiachengjiao_list.count()
             page_number = total_count // page_size + 1
@@ -56,3 +62,4 @@ class GetCJPageListSerializer(serializers.Serializer):
             result["error_code"] = ErrorCode.操作错误.value
             result["error"] = "查询出错"
             return result
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}} -Django</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lianjia/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'lianjia/content/site.css' %}" />
+    <script src="{% static 'lianjia/scripts/modernizr-2.6.2.js' %}"></script>
+    <script src="{% static 'lianjia/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'lianjia/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'lianjia/scripts/respond.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div>
+                <h1 class="text-center">用户注册</h1>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputUserName" class="control-label">账号</label>
+                        <div>
+                            <input type="text" class="form-control" id="inputUserName" placeholder="账号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNickName" class="control-label">用户名</label>
+                        <div>
+                            <input type="text" class="form-control" id="inputNickName" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="control-label">密码</label>
+                        <div>
+                            <input type="password" class="form-control center-block" id="inputPassword" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword2" class="control-label">确认密码</label>
+                        <div>
+                            <input type="password" class="form-control center-block" id="inputPassword2" placeholder="确认密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-default">注 册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
