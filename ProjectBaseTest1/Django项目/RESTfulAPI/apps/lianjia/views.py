@@ -4,6 +4,7 @@ from django.template import RequestContext
 from datetime import datetime
 from apps.user.models import User
 from .forms import UserForm
+import random
 # Create your views here.
 
 
@@ -49,6 +50,8 @@ def login(request):
     :param request:
     :return:
     """
+    if request.session.get('is_login',False):
+        redirect('/lianjia/')
     if request.method == 'POST':
         login_form = UserForm(request.POST)
         message = '请检查填写的内容！'
@@ -57,24 +60,30 @@ def login(request):
             password = login_form.cleaned_data['password']
             try:
                 user=User.objects.get(user_name=username)
+     
                 if user.mobile == password:
+                    request.session['is_login'] = True
+                    request.session['user_id'] = user.id
+                    request.session['user_name'] = user.user_name
                     return redirect('/lianjia/')
                 else:
                     message = '账户或密码不正确！'
-            except:
-                message = '账户或密码不正确！'
+  
+            except User.DoesNotExist:
+                message = '登录失败！'
+
         return render(request,'lianjia/login.html',{
             'title': '登录',
             'year': datetime.now().year,
             'message':message,
-            'login_form':login_form
+            # 'login_form':login_form
         })
-    login_form = UserForm()
+    login_form = UserForm() # Django form 表单
     return render(request, 'lianjia/login.html', {
         'title': '登录',
         'year': datetime.now().year,
         'message':'',
-        'login_form':login_form
+        # 'login_form':login_form  # 暂时不采用这种
     })
 
 def register(request):
@@ -83,9 +92,51 @@ def register(request):
     :param request:
     :return:
     """
+    if request.session.get('is_login',False):
+        redirect('/lianjia/')
+    if request.method == 'POST':
+        message = '请检查填写的内容！'
+        username = request.POST.get('username','')
+        nickname = request.POST.get('nickname','')
+        password = request.POST.get('password','')
+        mobile = password
+        guid = 'u'+datetime.now().strftime('%Y%m%d%H%M%S')+str(random.randrange(1000,9999))
+
+        try:  
+            print('-'*10)                      
+            new_user=User()
+            new_user.user_guid=guid
+            new_user.user_name=username
+            new_user.real_name=nickname
+            new_user.mobile=mobile
+            new_user.balance=100
+            new_user.all_balance=80
+            new_user.available_balance=50
+            new_user.create_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            new_user.last_login_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            new_user.gender=1
+            new_user.province='河南'
+            new_user.save()
+
+            request.session['is_login'] = True
+            request.session['user_id'] = user.id
+            request.session['user_name'] = user.user_name
+            return redirect('/lianjia/')
+
+        except Exception as ex:
+            print(ex)
+            message='注册失败！'
+        
+        return render(request,'lianjia/login.html',{
+            'title': '注册',
+            'year': datetime.now().year,
+            'message':message,
+        })
+            
+        
     return render(request, 'lianjia/register.html', {
         'title': '注册',
-        'year': datetime.now().year
+        'year': datetime.now().year,
     })
 
 

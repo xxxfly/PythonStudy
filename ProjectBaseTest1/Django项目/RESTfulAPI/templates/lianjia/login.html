@@ -21,38 +21,42 @@
         <div class="row">
             <div id="loginVue">
                 {% if message %}
-                    <p>{{message}}</p>
+                <p>{{message}}</p>
                 {% endif %}
 
-                
+
                 <h1 class="text-center">用户登录</h1>
-              
-                <form class="form-horizontal" action='{% url 'login' %}' method='post'>
+
+                <form class="form-horizontal" method="POST">
                     {% csrf_token %}
-                    {{ login_form }}
-                    {% comment %} <div class="form-group">
-                        <label for="inputUserName" class="control-label">账号</label>
+
+                    <!-- {{ login_form }} -->
+                    <div class="form-group">
+                        <label for="inputUserName" class="control-label ">账号</label>
                         <div>
-                            <input type="text" class="form-control" id="inputUserName" placeholder="账号" v-model='username'>
+                            <input type="text" class="form-control" id="inputUserName" name="username" placeholder="账号" v-model='username'>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="control-label">密码</label>
+                        <label for="inputPassword" class="control-label ">密码</label>
                         <div>
-                            <input type="password" class="form-control center-block" id="inputPassword" placeholder="密码" v-model='password'>
+                            <input type="password" class="form-control center-block" id="inputPassword" name="password" placeholder="密码 " v-model='password'>
                         </div>
-                    </div>{% endcomment %}
-                    <div class="form-group">
+                    </div>
+                    <div class="form-group ">
                         <div>
-                            <button type="submit" class="btn btn-default">登 录</button>
+                            <button type="button" class="btn btn-default" v-on:click="loginSubmit">登 录</button>
                         </div>
-                    </div> 
+                        <div>
+                            <button type="button" class="btn btn-default" v-on:click="loginRegist">注 册</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 
         </div>
 
-{% comment %} https://blog.csdn.net/laikaikai/article/details/80563387 {% endcomment %}
+        <!-- https://blog.csdn.net/laikaikai/article/details/80563387  -->
     </div>
     <script type="text/javascript">
         var loginVue = new Vue({
@@ -66,13 +70,25 @@
             methods: {
                 loginSubmit: function() {
                     var self = this;
+                    if (self.username == '' || self.username == null || self.username == undefined) {
+                        alert('请检查填写的内容！');
+                        return
+                    }
+                    if (self.password == '' || self.password == null || self.password == undefined) {
+                        alert('请检查填写的内容！');
+                        return
+                    }
                     postData = {}
                     postData['username'] = self.username;
                     postData['password'] = self.password;
-                    $.post('', postData, function(result) {
+                    postData['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
+                    $.post("{% url 'login' %}", postData, function(result) {
                         console.info(result);
 
                     }, 'JSON')
+                },
+                loginRegist: function() {
+                    window.location.href = "{% url 'register' %}"
                 }
             },
         })
