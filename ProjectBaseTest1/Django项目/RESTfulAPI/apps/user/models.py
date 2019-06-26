@@ -28,9 +28,9 @@ class User(models.Model):
     wx_open_id = models.CharField(max_length=150, verbose_name='微信OpenID')
     wx_union_id = models.CharField(
         max_length=150, blank=True, null=True, verbose_name='微信UnionID')
-    create_date = models.FloatField(blank=True, null=True, verbose_name='创建时间')
-    last_login_date = models.FloatField(
-        blank=True, null=True, verbose_name='最后登录时间')
+    create_date = models.DateTimeField(blank=True, null=True,    auto_now=False,verbose_name='创建时间')
+    last_login_date = models.DateTimeField(
+        blank=True, null=True, auto_now=False, verbose_name='最后登录时间')
     ip_address = models.CharField(
         max_length=50, blank=True, null=True, verbose_name='IP地址')
     gender = models.IntegerField(blank=True, null=True, verbose_name='性别')

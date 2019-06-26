@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.utils import timezone
 from datetime import datetime
+import pytz
 from apps.user.models import User
 from .forms import UserForm
 import random
@@ -50,8 +52,9 @@ def login(request):
     :param request:
     :return:
     """
+    print(request.session.get('is_login',False))
     if request.session.get('is_login',False):
-        redirect('/lianjia/')
+        return redirect('/lianjia/')
     if request.method == 'POST':
         login_form = UserForm(request.POST)
         message = '请检查填写的内容！'
@@ -59,11 +62,10 @@ def login(request):
             username = login_form.cleaned_data['username']
             password = login_form.cleaned_data['password']
             try:
-                user=User.objects.get(user_name=username)
-     
+                user=User.objects.get(user_name=username)    
                 if user.mobile == password:
                     request.session['is_login'] = True
-                    request.session['user_id'] = user.id
+                    request.session['user_guid'] = user.id
                     request.session['user_name'] = user.user_name
                     return redirect('/lianjia/')
                 else:
@@ -112,19 +114,18 @@ def register(request):
             new_user.balance=100
             new_user.all_balance=80
             new_user.available_balance=50
-            new_user.create_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            new_user.last_login_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            new_user.create_date=datetime.now(pytz.utc)
+            new_user.last_login_date=datetime.now(pytz.utc)
             new_user.gender=1
             new_user.province='河南'
             new_user.save()
 
             request.session['is_login'] = True
-            request.session['user_id'] = user.id
-            request.session['user_name'] = user.user_name
+            request.session['user_guid'] = new_user.user_guid
+            request.session['user_name'] = new_user.user_name
             return redirect('/lianjia/')
 
         except Exception as ex:
-            print(ex)
             message='注册失败！'
         
         return render(request,'lianjia/login.html',{
