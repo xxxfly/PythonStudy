@@ -14,20 +14,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Student',
-            fields=[
-                ('s_id', models.CharField(max_length=32, primary_key=True, serialize=False, verbose_name='学生ID')),
-                ('s_name', models.CharField(max_length=20, verbose_name='学生姓名')),
-                ('s_age', models.IntegerField(verbose_name='学生年龄')),
-                ('s_sex', models.IntegerField(default=0, verbose_name='性别 0 男  1 女')),
-                ('s_class', models.IntegerField(verbose_name='班级')),
-            ],
-            options={
-                'verbose_name': '学生信息',
-                'verbose_name_plural': '学生信息',
-            },
-        ),
-        migrations.CreateModel(
             name='User',
             fields=[
                 ('user_id', models.AutoField(primary_key=True, serialize=False, verbose_name='用户ID')),

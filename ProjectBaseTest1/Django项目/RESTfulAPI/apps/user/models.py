@@ -42,6 +42,9 @@ class User(models.Model):
         max_length=150, blank=True, null=True, verbose_name='会话秘钥')
     is_notify = models.IntegerField(blank=True, null=True, verbose_name='是否开启打卡通知')
 
+    def __str__(self):
+        return self.user_name
+
     @classmethod
     def update_user_balance(cls, user_id, amount):
         with transaction.atomic():
@@ -63,14 +66,32 @@ class User(models.Model):
         verbose_name = '用户'
         verbose_name_plural = '用户'
 
+class SClass(models.Model):
+    """班级表"""
+    class_id = models.IntegerField(primary_key=True,auto_created=True,verbose_name='班级ID')
+    class_name = models.CharField(max_length=20,blank=False,null=False,verbose_name='班级名称')
+    grade = models.IntegerField(blank=False,null=False,verbose_name='年级')
+
+    def __str__(self):
+        return self.class_name
+
+    class Meta:
+        verbose_name = '班级信息'
+        ordering =['class_id']
+        verbose_name_plural = verbose_name
 
 class Student(models.Model):
+    """学生信息表"""
     s_id = models.CharField(primary_key=True, max_length=32, verbose_name='学生ID')
     s_name = models.CharField(max_length=20, verbose_name='学生姓名')
     s_age = models.IntegerField(verbose_name='学生年龄')
     s_sex = models.IntegerField(default=0, verbose_name='性别 0 男  1 女')
-    s_class = models.IntegerField(verbose_name='班级')
+    s_class = models.ForeignKey(SClass,db_column='class_id',on_delete=models.PROTECT,verbose_name='班级')
+
+    def __str__(self):
+        return self.s_name
 
     class Meta:
         verbose_name = '学生信息'
         verbose_name_plural = verbose_name
+
