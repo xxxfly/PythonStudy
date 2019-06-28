@@ -5,7 +5,7 @@ from django.utils import timezone
 from datetime import datetime
 import pytz
 from apps.user.models import User
-from .forms import UserForm
+from .forms import UserForm,RegisterForm
 import random
 # Create your views here.
 
@@ -98,6 +98,11 @@ def register(request):
         redirect('/lianjia/')
     if request.method == 'POST':
         message = '请检查填写的内容！'
+
+        # 通过表单验证提交的数据是否合规
+        # registerForm = RegisterForm(request.POST)
+        # if registerForm.is_valid():
+        #     pass
         username = request.POST.get('username','')
         nickname = request.POST.get('nickname','')
         password = request.POST.get('password','')
