@@ -145,6 +145,10 @@ def register(request):
         'year': datetime.now().year,
     })
 
+def logout(request):
+    """注销"""
+    request.session.flush()
+    return redirect('lianjia')
 
 def cj_list(request, area):
     """

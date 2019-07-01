@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'lianjia/content/site.css' %}" />
     <script src="{% static 'lianjia/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -25,13 +27,20 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if request.session.is_login%}
+                    <li><span>{{ request.session.user_name }}</span></li>
+                    <li><a href="{% url 'logout' %}">注销</a></li>
+                    {% esle %}
+                    <li><a href="{% url 'login' %}">登录</a></li>
+                    <li><a href="{% url 'register' %}">注册</a></li>
+                    {% endif %}
                 </ul>
                 <!--{% include 'user/loginpartial.html' %}-->
             </div>
         </div>
     </div>
     <div class="body-content">
-{% block content %}{% endblock %}
+        {% block content %}{% endblock %}
         <hr/>
         <footer>
             <p>&copy; {{ year }} - My Django Application</p>
@@ -41,7 +50,8 @@
     <script src="{% static 'lianjia/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'lianjia/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'lianjia/scripts/respond.js' %}"></script>
-{% block scripts %}{% endblock %}
+    {% block scripts %}{% endblock %}
 
 </body>
+
 </html>
