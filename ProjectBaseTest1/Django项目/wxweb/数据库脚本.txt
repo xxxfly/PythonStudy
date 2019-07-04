@@ -1,0 +1,491 @@
+
+/****** Object:  Table [dbo].[WX_WordRedPacket]    Script Date: 07/04/2019 19:58:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[WX_WordRedPacket](
+	[Code] [varchar](128) NOT NULL,
+	[OpenID] [varchar](128) NOT NULL,
+	[UserID] [varchar](256) NULL,
+	[HDActName] [varchar](128) NULL,
+	[HDCode] [varchar](20) NULL,
+	[WordCode] [varchar](128) NOT NULL,
+	[SendStatus] [int] NOT NULL,
+	[TotalAmount] [int] NOT NULL,
+	[TotalNum] [int] NOT NULL,
+	[SendName] [varchar](128) NULL,
+	[Wishing] [varchar](128) NULL,
+	[MuchID] [varchar](128) NULL,
+	[WXAppID] [varchar](128) NULL,
+	[Remark] [varchar](256) NULL,
+	[ClientIP] [varchar](128) NULL,
+	[SceneID] [varchar](32) NULL,
+	[RiskInfo] [varchar](128) NULL,
+	[ConsumeMchID] [varchar](128) NULL,
+	[Extend1] [varchar](max) NULL,
+	[Extend2] [varchar](max) NULL,
+	[Extend3] [varchar](max) NULL,
+	[Extend4] [varchar](max) NULL,
+	[Extend5] [varchar](max) NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[UpdateTime] [datetime] NULL,
+ CONSTRAINT [PK_WX_WORDREDPACKET] PRIMARY KEY CLUSTERED 
+(
+	[Code] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[WX_WordConfig]    Script Date: 07/04/2019 19:58:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[WX_WordConfig](
+	[Word] [varchar](20) NOT NULL,
+	[HDCode] [varchar](20) NOT NULL,
+	[HDName] [varchar](128) NOT NULL,
+	[Price] [int] NOT NULL,
+	[Extend1] [varchar](max) NULL,
+	[Extend2] [varchar](max) NULL,
+	[CreateTime] [datetime] NULL,
+	[UpdateTime] [datetime] NULL,
+ CONSTRAINT [PK_WX_WORDCONFIG] PRIMARY KEY CLUSTERED 
+(
+	[Word] ASC,
+	[HDCode] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[WX_NormalRedPacket]    Script Date: 07/04/2019 19:58:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[WX_NormalRedPacket](
+	[Code] [varchar](128) NOT NULL,
+	[OpenID] [varchar](128) NOT NULL,
+	[UserID] [varchar](256) NULL,
+	[HDActName] [varchar](128) NULL,
+	[HDCode] [varchar](20) NULL,
+	[SendStatus] [int] NOT NULL,
+	[TotalAmount] [int] NOT NULL,
+	[TotalNum] [int] NOT NULL,
+	[SendName] [varchar](128) NULL,
+	[Wishing] [varchar](128) NULL,
+	[MuchID] [varchar](128) NULL,
+	[WXAppID] [varchar](128) NULL,
+	[Remark] [varchar](256) NULL,
+	[ClientIP] [varchar](128) NULL,
+	[SceneID] [varchar](32) NULL,
+	[RiskInfo] [varchar](128) NULL,
+	[ConsumeMchID] [varchar](128) NULL,
+	[Extend1] [varchar](max) NULL,
+	[Extend2] [varchar](max) NULL,
+	[Extend3] [varchar](max) NULL,
+	[Extend4] [varchar](max) NULL,
+	[Extend5] [varchar](max) NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[UpdateTime] [datetime] NULL,
+ CONSTRAINT [PK_WX_NORMALREDPACKET] PRIMARY KEY CLUSTERED 
+(
+	[Code] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[WX_GlobalVariables]    Script Date: 07/04/2019 19:58:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[WX_GlobalVariables](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[VariableName] [varchar](1024) NOT NULL,
+	[VariableValue] [varchar](max) NULL,
+	[VariableDescription] [varchar](1024) NULL,
+	[ExpireTime] [int] NULL,
+	[Extend1] [varchar](max) NULL,
+	[Extend2] [varchar](max) NULL,
+	[Extend3] [varchar](max) NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[UpdateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_WX_GLOBALVARIABLES] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Default [DF__WX_Global__Varia__4222D4EF]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [VariableName]
+GO
+/****** Object:  Default [DF__WX_Global__Varia__4316F928]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [VariableValue]
+GO
+/****** Object:  Default [DF__WX_Global__Varia__440B1D61]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [VariableDescription]
+GO
+/****** Object:  Default [DF__WX_Global__Expir__44FF419A]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ((0)) FOR [ExpireTime]
+GO
+/****** Object:  Default [DF__WX_Global__Exten__45F365D3]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [Extend1]
+GO
+/****** Object:  Default [DF__WX_Global__Exten__46E78A0C]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [Extend2]
+GO
+/****** Object:  Default [DF__WX_Global__Exten__47DBAE45]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('') FOR [Extend3]
+GO
+/****** Object:  Default [DF__WX_Global__Creat__48CFD27E]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('gettime()') FOR [CreateTime]
+GO
+/****** Object:  Default [DF__WX_Global__Updat__49C3F6B7]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_GlobalVariables] ADD  DEFAULT ('gettime()') FOR [UpdateTime]
+GO
+/****** Object:  Default [DF__WX_NormalR__Code__5441852A]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Code]
+GO
+/****** Object:  Default [DF__WX_Normal__OpenI__5535A963]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [OpenID]
+GO
+/****** Object:  Default [DF__WX_Normal__UserI__5629CD9C]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [UserID]
+GO
+/****** Object:  Default [DF__WX_Normal__HDAct__571DF1D5]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [HDActName]
+GO
+/****** Object:  Default [DF__WX_Normal__HDCod__5812160E]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [HDCode]
+GO
+/****** Object:  Default [DF__WX_Normal__SendS__59063A47]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ((0)) FOR [SendStatus]
+GO
+/****** Object:  Default [DF__WX_Normal__Total__59FA5E80]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ((0)) FOR [TotalAmount]
+GO
+/****** Object:  Default [DF__WX_Normal__Total__5AEE82B9]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ((0)) FOR [TotalNum]
+GO
+/****** Object:  Default [DF__WX_Normal__SendN__5BE2A6F2]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [SendName]
+GO
+/****** Object:  Default [DF__WX_Normal__Wishi__5CD6CB2B]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Wishing]
+GO
+/****** Object:  Default [DF__WX_Normal__MuchI__5DCAEF64]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [MuchID]
+GO
+/****** Object:  Default [DF__WX_Normal__WXApp__5EBF139D]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [WXAppID]
+GO
+/****** Object:  Default [DF__WX_Normal__Remar__5FB337D6]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Remark]
+GO
+/****** Object:  Default [DF__WX_Normal__Clien__60A75C0F]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [ClientIP]
+GO
+/****** Object:  Default [DF__WX_Normal__Scene__619B8048]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [SceneID]
+GO
+/****** Object:  Default [DF__WX_Normal__RiskI__628FA481]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [RiskInfo]
+GO
+/****** Object:  Default [DF__WX_Normal__Consu__6383C8BA]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [ConsumeMchID]
+GO
+/****** Object:  Default [DF__WX_Normal__Exten__6477ECF3]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Extend1]
+GO
+/****** Object:  Default [DF__WX_Normal__Exten__656C112C]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Extend2]
+GO
+/****** Object:  Default [DF__WX_Normal__Exten__66603565]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Extend3]
+GO
+/****** Object:  Default [DF__WX_Normal__Exten__6754599E]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Extend4]
+GO
+/****** Object:  Default [DF__WX_Normal__Exten__68487DD7]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('') FOR [Extend5]
+GO
+/****** Object:  Default [DF__WX_Normal__Creat__693CA210]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('gettime()') FOR [CreateTime]
+GO
+/****** Object:  Default [DF__WX_Normal__Updat__6A30C649]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_NormalRedPacket] ADD  DEFAULT ('gettime()') FOR [UpdateTime]
+GO
+/****** Object:  Default [DF__WX_WordCo__HDNam__4CA06362]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ('') FOR [HDName]
+GO
+/****** Object:  Default [DF__WX_WordCo__Price__4D94879B]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ((1)) FOR [Price]
+GO
+/****** Object:  Default [DF__WX_WordCo__Exten__4E88ABD4]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ('') FOR [Extend1]
+GO
+/****** Object:  Default [DF__WX_WordCo__Exten__4F7CD00D]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ('') FOR [Extend2]
+GO
+/****** Object:  Default [DF__WX_WordCo__Creat__5070F446]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ('gettime()') FOR [CreateTime]
+GO
+/****** Object:  Default [DF__WX_WordCo__Updat__5165187F]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordConfig] ADD  DEFAULT ('gettime()') FOR [UpdateTime]
+GO
+/****** Object:  Default [DF__WX_WordRed__Code__6D0D32F4]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Code]
+GO
+/****** Object:  Default [DF__WX_WordRe__OpenI__6E01572D]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [OpenID]
+GO
+/****** Object:  Default [DF__WX_WordRe__UserI__6EF57B66]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [UserID]
+GO
+/****** Object:  Default [DF__WX_WordRe__HDAct__6FE99F9F]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [HDActName]
+GO
+/****** Object:  Default [DF__WX_WordRe__HDCod__70DDC3D8]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [HDCode]
+GO
+/****** Object:  Default [DF__WX_WordRe__WordC__71D1E811]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [WordCode]
+GO
+/****** Object:  Default [DF__WX_WordRe__SendS__72C60C4A]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ((0)) FOR [SendStatus]
+GO
+/****** Object:  Default [DF__WX_WordRe__Total__73BA3083]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ((0)) FOR [TotalAmount]
+GO
+/****** Object:  Default [DF__WX_WordRe__Total__74AE54BC]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ((0)) FOR [TotalNum]
+GO
+/****** Object:  Default [DF__WX_WordRe__SendN__75A278F5]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [SendName]
+GO
+/****** Object:  Default [DF__WX_WordRe__Wishi__76969D2E]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Wishing]
+GO
+/****** Object:  Default [DF__WX_WordRe__MuchI__778AC167]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [MuchID]
+GO
+/****** Object:  Default [DF__WX_WordRe__WXApp__787EE5A0]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [WXAppID]
+GO
+/****** Object:  Default [DF__WX_WordRe__Remar__797309D9]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Remark]
+GO
+/****** Object:  Default [DF__WX_WordRe__Clien__7A672E12]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [ClientIP]
+GO
+/****** Object:  Default [DF__WX_WordRe__Scene__7B5B524B]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [SceneID]
+GO
+/****** Object:  Default [DF__WX_WordRe__RiskI__7C4F7684]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [RiskInfo]
+GO
+/****** Object:  Default [DF__WX_WordRe__Consu__7D439ABD]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [ConsumeMchID]
+GO
+/****** Object:  Default [DF__WX_WordRe__Exten__7E37BEF6]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Extend1]
+GO
+/****** Object:  Default [DF__WX_WordRe__Exten__7F2BE32F]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Extend2]
+GO
+/****** Object:  Default [DF__WX_WordRe__Exten__00200768]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Extend3]
+GO
+/****** Object:  Default [DF__WX_WordRe__Exten__01142BA1]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Extend4]
+GO
+/****** Object:  Default [DF__WX_WordRe__Exten__02084FDA]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('') FOR [Extend5]
+GO
+/****** Object:  Default [DF__WX_WordRe__Creat__02FC7413]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('gettime()') FOR [CreateTime]
+GO
+/****** Object:  Default [DF__WX_WordRe__Updat__03F0984C]    Script Date: 07/04/2019 19:58:10 ******/
+ALTER TABLE [dbo].[WX_WordRedPacket] ADD  DEFAULT ('gettime()') FOR [UpdateTime]
+GO
+
+
+
+/****** 其他数据库 ******/
+
+/****** Object:  Table [dbo].[WXP_User_Pruduct]    Script Date: 07/04/2019 19:59:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[WXP_User_Pruduct](
+	[C_ID] [int] IDENTITY(1,1) NOT NULL,
+	[C_ADAccount] [nvarchar](50) NOT NULL,
+	[C_OpenID] [nvarchar](50) NOT NULL,
+	[C_YeWuName] [nvarchar](200) NOT NULL,
+	[C_HuoDongID] [nvarchar](50) NOT NULL,
+	[C_HuoDongName] [nvarchar](50) NULL,
+	[C_ProductID] [nvarchar](50) NOT NULL,
+	[C_ProductName] [nvarchar](200) NULL,
+	[C_Extend1] [nvarchar](200) NULL,
+	[C_Extend2] [nvarchar](200) NULL,
+	[C_Extend3] [nvarchar](200) NULL,
+	[C_Extend4] [nvarchar](200) NULL,
+	[C_CreateTime] [datetime] NULL,
+	[C_UpdateTime] [datetime] NULL,
+ CONSTRAINT [PK_WXP_USER_PRUDUCT] PRIMARY KEY CLUSTERED 
+(
+	[C_ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[WXP_User_Info]    Script Date: 07/04/2019 19:59:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[WXP_User_Info](
+	[C_ADAccount] [nvarchar](50) NULL,
+	[C_OpenID] [nvarchar](50) NOT NULL,
+	[C_UserName] [nvarchar](50) NULL,
+	[C_Sex] [int] NULL,
+	[C_Phone] [nvarchar](50) NULL,
+	[C_Adresss] [nvarchar](max) NULL,
+	[C_Extend1] [nvarchar](200) NULL,
+	[C_Extend2] [nvarchar](200) NULL,
+	[C_Extend3] [nvarchar](200) NULL,
+	[C_Extend4] [nvarchar](200) NULL,
+	[C_CreateTime] [datetime] NULL,
+	[C_UpdateTime] [datetime] NULL,
+ CONSTRAINT [PK_WXP_USER_INFO] PRIMARY KEY CLUSTERED 
+(
+	[C_OpenID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[WXP_Global_Variables]    Script Date: 07/04/2019 19:59:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[WXP_Global_Variables](
+	[C_ID] [int] IDENTITY(1,1) NOT NULL,
+	[C_VariableName] [nvarchar](max) NOT NULL,
+	[C_VariableDes] [nvarchar](50) NULL,
+	[C_VariableValue] [nvarchar](max) NULL,
+	[C_ExpireTime] [int] NOT NULL,
+	[C_Extend1] [nvarchar](50) NULL,
+	[C_Extend2] [nvarchar](50) NULL,
+	[C_Extend3] [nvarchar](50) NULL,
+	[C_CreateTime] [datetime] NOT NULL,
+	[C_UpdateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_WXP_GLOBAL_VARIABLES] PRIMARY KEY CLUSTERED 
+(
+	[C_ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Var__15502E78]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_VariableName]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Var__164452B1]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_VariableDes]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Var__173876EA]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_VariableValue]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Exp__182C9B23]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ((0)) FOR [C_ExpireTime]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Ext__1920BF5C]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_Extend1]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Ext__1A14E395]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_Extend2]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Ext__1B0907CE]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT ('') FOR [C_Extend3]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Cre__1BFD2C07]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT (getdate()) FOR [C_CreateTime]
+GO
+/****** Object:  Default [DF__WXP_Globa__C_Upd__1CF15040]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_Global_Variables] ADD  DEFAULT (getdate()) FOR [C_UpdateTime]
+GO
+/****** Object:  Default [DF__WXP_User___C_ADA__7F60ED59]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_ADAccount]
+GO
+/****** Object:  Default [DF__WXP_User___C_Use__00551192]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_UserName]
+GO
+/****** Object:  Default [DF__WXP_User___C_Sex__014935CB]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ((0)) FOR [C_Sex]
+GO
+/****** Object:  Default [DF__WXP_User___C_Pho__023D5A04]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Phone]
+GO
+/****** Object:  Default [DF__WXP_User___C_Adr__03317E3D]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Adresss]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__0425A276]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Extend1]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__0519C6AF]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Extend2]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__060DEAE8]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Extend3]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__07020F21]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT ('') FOR [C_Extend4]
+GO
+/****** Object:  Default [DF__WXP_User___C_Cre__07F6335A]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT (getdate()) FOR [C_CreateTime]
+GO
+/****** Object:  Default [DF__WXP_User___C_Upd__08EA5793]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Info] ADD  DEFAULT (getdate()) FOR [C_UpdateTime]
+GO
+/****** Object:  Default [DF__WXP_User___C_Huo__0BC6C43E]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_HuoDongName]
+GO
+/****** Object:  Default [DF__WXP_User___C_Pro__0CBAE877]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_ProductName]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__0DAF0CB0]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_Extend1]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__0EA330E9]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_Extend2]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__0F975522]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_Extend3]
+GO
+/****** Object:  Default [DF__WXP_User___C_Ext__108B795B]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT ('') FOR [C_Extend4]
+GO
+/****** Object:  Default [DF__WXP_User___C_Cre__117F9D94]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT (getdate()) FOR [C_CreateTime]
+GO
+/****** Object:  Default [DF__WXP_User___C_Upd__1273C1CD]    Script Date: 07/04/2019 19:59:20 ******/
+ALTER TABLE [dbo].[WXP_User_Pruduct] ADD  DEFAULT (getdate()) FOR [C_UpdateTime]
+GO
+
+
+
+
+
